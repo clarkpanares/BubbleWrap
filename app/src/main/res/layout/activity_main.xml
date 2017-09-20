@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.panares.bubblewrap.MainActivity"
+    android:background="@drawable/bgblue">
+
+    <ImageButton
+        android:id="@+id/bubbleH1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:cropToPadding="false"
+
+        android:src="@drawable/unpopped" />
+
+    <ImageButton
+        android:id="@+id/bubbleH2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:cropToPadding="false"
+
+        android:src="@drawable/unpopped"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/bubbleH1"
+        android:layout_toEndOf="@+id/bubbleH1" />
+
+
+    <ImageButton
+        android:id="@+id/bubbleH3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:cropToPadding="false"
+
+        android:src="@drawable/unpopped"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/bubbleH2"
+        android:layout_toRightOf="@+id/bubbleH2" />
+
+    <ImageButton
+        android:id="@+id/bubbleH4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:cropToPadding="false"
+
+        android:src="@drawable/unpopped"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/bubbleH3"
+        android:layout_toEndOf="@+id/bubbleH3" />
+
+    <ImageButton
+        android:id="@+id/bubbleH5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:cropToPadding="false"
+
+        android:src="@drawable/unpopped"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/bubbleH4"
+        android:layout_toEndOf="@+id/bubbleH4" />
+
+</RelativeLayout>
