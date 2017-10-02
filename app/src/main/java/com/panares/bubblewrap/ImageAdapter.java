@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.media.MediaPlayer;
+import android.os.Vibrator;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -38,8 +40,10 @@ public class ImageAdapter extends BaseAdapter {
 
     // create a new ImageButton for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
-       final ImageButton imageButton;
-        final MediaPlayer mp = new MediaPlayer();
+        final ImageButton imageButton;
+        final MediaPlayer mp = MediaPlayer.create(mContext, R.raw.bwsound);
+
+
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
             imageButton = new ImageButton(mContext);
@@ -49,39 +53,27 @@ public class ImageAdapter extends BaseAdapter {
         } else {
             imageButton = (ImageButton) convertView;
         }
-        imageButton.setImageResource(R.drawable.unpopped);
         imageButton.setBackgroundDrawable(null);
-
-            imageButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    imageButton.setImageResource(R.drawable.popped1); /* Changes picture */
-                    if (mp.isPlaying()) { //plays sound effect
-                        mp.stop();
-                    }
-                    try {
-                        mp.reset();
-                        AssetFileDescriptor afd;
-                        afd = mContext.getAssets().openFd("bwsound.mp3");
-                        mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-                        mp.prepare();
-                        mp.start();
-                    } catch (IllegalStateException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    //Wait t amount of time here
-                    imageButton.postDelayed(new Runnable() {
-                        public void run() {
-                           imageButton.setImageResource(R.drawable.unpopped); //Changes Color Again
-                            mp.pause();
-                        }
-                    }, 3 * 1000 /* This would be the milisecond you want to wait*/);
+        imageButton.setImageResource(R.drawable.unpopped);
+        imageButton.setOnTouchListener(new View.OnTouchListener() {
+            final ImageButton image = imageButton;
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                image.setImageResource(R.drawable.popped1); /* Changes picture */
+                mp.start();
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                    Vibrator vi = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
+                    vi.vibrate(100);
                 }
-
-
-            });
+                //Wait t amount of time here
+                image.postDelayed(new Runnable() {
+                    public void run() {
+                        image.setImageResource(R.drawable.unpopped); //Changes picture again
+                    }
+                }, 3 * 1000 /* This would be the milisecond you want to wait*/);
+                return true;
+            }
+        });
         return imageButton;
     }
 
