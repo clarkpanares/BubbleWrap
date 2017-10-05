@@ -1,12 +1,8 @@
 package com.panares.bubblewrap;
 
 import android.content.Context;
-import android.content.res.AssetFileDescriptor;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Vibrator;
-import android.support.annotation.DrawableRes;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +10,14 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageButton;
 
-
-import java.io.IOException;
-
 /**
  * Created by Clark.Panares on 10/02/2017.
  */
 
-public class ImageAdapter extends BaseAdapter {
+public class ImageAdapter2 extends BaseAdapter {
     private Context mContext;
 
-    public ImageAdapter(Context c) {
+    public ImageAdapter2(Context c) {
         mContext = c;
     }
 
